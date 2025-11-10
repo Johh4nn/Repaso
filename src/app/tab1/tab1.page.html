@@ -1,17 +1,30 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
+    <ion-title>Buscar Canciones (Lrclib)</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
+  <ion-item>
+    <ion-input placeholder="Nombre de la canción" [(ngModel)]="query"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input placeholder="Artista (opcional)" [(ngModel)]="artist"></ion-input>
+  </ion-item>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <ion-button expand="block" (click)="search()">Buscar</ion-button>
+
+  <ion-list *ngIf="results.length > 0">
+    <ion-item *ngFor="let track of results" (click)="viewLyrics(track)">
+      <ion-label>
+        <h2>{{ track.trackName }}</h2>
+        <p>{{ track.artistName }} — {{ track.albumName }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <div *ngIf="selectedLyrics" class="ion-padding">
+    <h3>Letra:</h3>
+    <pre>{{ selectedLyrics }}</pre>
+  </div>
 </ion-content>

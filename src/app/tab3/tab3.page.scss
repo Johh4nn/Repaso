@@ -1,0 +1,435 @@
+// Variables de colores para tema gaming
+:root {
+  --primary-color: #667eea;
+  --secondary-color: #764ba2;
+  --accent-color: #f093fb;
+  --success-color: #4cd964;
+  --background-color: #0f0f1a;
+  --card-background: #1a1a2e;
+  --surface-color: #16213e;
+  --text-primary: #ffffff;
+  --text-secondary: #b8b8d1;
+  --border-color: #2d3047;
+  --gradient-primary: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  --gradient-accent: linear-gradient(135deg, var(--accent-color), #f5576c);
+  --gradient-card: linear-gradient(145deg, #1a1a2e, #16213e);
+  --shadow-glow: 0 8px 32px rgba(102, 126, 234, 0.15);
+  --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.3);
+  --neon-glow: 0 0 10px rgba(102, 126, 234, 0.5);
+}
+
+// Estilos del contenido principal
+ion-content {
+  --background: var(--background-color);
+  --color: var(--text-primary);
+}
+
+// Header con tema gaming
+ion-header {
+  ion-toolbar {
+    --background: var(--gradient-primary);
+    --color: white;
+    --border-width: 0;
+    
+    ion-title {
+      font-weight: 700;
+      font-size: 1.3rem;
+      letter-spacing: -0.5px;
+      text-align: center;
+      
+      &::before {
+        content: "🎮 ";
+        font-size: 1.2em;
+      }
+    }
+  }
+}
+
+// Searchbar mejorado
+ion-searchbar {
+  --background: var(--surface-color);
+  --color: var(--text-primary);
+  --placeholder-color: var(--text-secondary);
+  --border-radius: 12px;
+  --box-shadow: var(--shadow-glow);
+  margin-bottom: 24px;
+  padding: 0;
+  
+  .searchbar-input-container {
+    input {
+      background: var(--surface-color) !important;
+      color: var(--text-primary) !important;
+      
+      &::placeholder {
+        color: var(--text-secondary) !important;
+      }
+    }
+  }
+  
+  &.searchbar-has-focus {
+    --box-shadow: var(--neon-glow);
+  }
+}
+
+// Spinner centrado mejorado
+.center-spinner {
+  --color: var(--primary-color);
+  width: 60px;
+  height: 60px;
+  margin: 40px auto;
+  display: block;
+  
+  &::after {
+    animation: pulse-glow 1.5s ease-in-out infinite;
+  }
+}
+
+// Lista de juegos
+ion-list {
+  background: transparent;
+  padding: 0;
+}
+
+// Tarjetas de juegos mejoradas
+ion-card {
+  --background: var(--card-background);
+  background: var(--gradient-card);
+  border-radius: 16px;
+  margin: 0 0 20px 0;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-card);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  position: relative;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-glow);
+    border-color: var(--primary-color);
+  }
+  
+  // Efecto de borde luminoso
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gradient-primary);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  &:hover::before {
+    opacity: 1;
+  }
+}
+
+// Imagen del juego
+ion-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 1px solid var(--border-color);
+  transition: transform 0.3s ease;
+  
+  ion-card:hover & {
+    transform: scale(1.05);
+  }
+}
+
+// Header de la tarjeta
+ion-card-header {
+  padding: 16px 16px 8px;
+  
+  ion-card-title {
+    color: var(--text-primary);
+    font-weight: 700;
+    font-size: 1.2rem;
+    line-height: 1.3;
+    margin-bottom: 4px;
+    
+    // Limitar a 2 líneas
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+// Contenido de la tarjeta
+ion-card-content {
+  padding: 8px 16px 16px;
+  
+  p {
+    color: var(--text-secondary);
+    margin: 8px 0;
+    font-size: 0.95rem;
+    
+    strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+  }
+}
+
+// Botón de oferta mejorado
+ion-button {
+  --background: var(--gradient-accent);
+  --background-hover: var(--gradient-accent);
+  --background-activated: #f5576c;
+  --background-focused: #f5576c;
+  --border-radius: 8px;
+  --box-shadow: 0 4px 15px rgba(240, 147, 251, 0.3);
+  --color: white;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin: 8px 0 0 0;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    --box-shadow: 0 6px 20px rgba(240, 147, 251, 0.4);
+    transform: translateY(-2px);
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+  
+  // Icono del botón
+  &::after {
+    content: " ➔";
+    font-weight: bold;
+    margin-left: 4px;
+  }
+}
+
+// Estados vacíos
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-secondary);
+  
+  .empty-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    display: block;
+    opacity: 0.7;
+  }
+  
+  h3 {
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+  
+  p {
+    font-size: 1rem;
+    line-height: 1.5;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+}
+
+// Grid responsivo
+.games-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 0;
+}
+
+// Animaciones
+@keyframes pulse-glow {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 1;
+    filter: drop-shadow(0 0 8px var(--primary-color));
+  }
+  100% {
+    transform: scale(0.95);
+    opacity: 0.7;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+// Aplicar animaciones
+ion-card {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+ion-searchbar {
+  animation: slideIn 0.4s ease-out;
+}
+
+// Precio con estilo especial
+.price-tag {
+  background: var(--gradient-primary);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  display: inline-block;
+  margin: 8px 0;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+// Badge de descuento (si tuviera)
+.discount-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: var(--success-color);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  z-index: 2;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+// Responsive
+@media (max-width: 768px) {
+  .games-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+  }
+  
+  ion-card {
+    margin-bottom: 16px;
+  }
+  
+  ion-card img {
+    height: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  .games-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  ion-card {
+    margin-bottom: 12px;
+    border-radius: 12px;
+  }
+  
+  ion-card-header {
+    padding: 12px 12px 6px;
+    
+    ion-card-title {
+      font-size: 1.1rem;
+    }
+  }
+  
+  ion-card-content {
+    padding: 6px 12px 12px;
+  }
+  
+  ion-card img {
+    height: 160px;
+  }
+}
+
+// Mejoras de accesibilidad
+ion-button:focus {
+  --box-shadow: 0 0 0 3px rgba(240, 147, 251, 0.4);
+}
+
+ion-card:focus-within {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+// Scrollbar personalizado
+ion-content::part(scroll) {
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: var(--surface-color);
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 4px;
+  }
+  
+  &::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-color);
+  }
+}
+
+// Efecto de carga skeleton
+.skeleton-card {
+  background: var(--surface-color);
+  border-radius: 16px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  
+  .skeleton-image {
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(90deg, var(--surface-color) 25%, var(--border-color) 50%, var(--surface-color) 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+  }
+  
+  .skeleton-text {
+    height: 16px;
+    background: linear-gradient(90deg, var(--surface-color) 25%, var(--border-color) 50%, var(--surface-color) 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+    margin: 12px 16px;
+    border-radius: 4px;
+    
+    &.title {
+      height: 20px;
+      margin-bottom: 8px;
+    }
+    
+    &.short {
+      width: 60%;
+    }
+  }
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}

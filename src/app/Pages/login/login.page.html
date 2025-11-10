@@ -1,0 +1,64 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Autenticación</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="auth-content">
+  <div class="auth-container">
+    <div class="auth-card">
+      <div class="card-header">
+        <ion-title>{{ isRegistering ? 'Crear cuenta' : 'Iniciar sesión' }}</ion-title>
+      </div>
+      
+      <div class="card-content">
+        <div class="logo">
+          <div class="logo-icon">🔐</div>
+          <div class="app-name">MiApp</div>
+          <div class="app-tagline">Gestiona tu contenido de forma segura</div>
+        </div>
+        
+        <ion-item>
+          <ion-input 
+            placeholder="Correo electrónico" 
+            type="email" 
+            [(ngModel)]="email"
+            class="custom-input">
+          </ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input 
+            placeholder="Contraseña" 
+            type="password" 
+            [(ngModel)]="password"
+            class="custom-input">
+          </ion-input>
+        </ion-item>
+
+        <ion-button 
+          class="primary-button" 
+          expand="full" 
+          (click)="isRegistering ? register() : login()">
+          {{ isRegistering ? 'Registrarme' : 'Ingresar' }}
+        </ion-button>
+
+        <ion-button 
+          class="secondary-button" 
+          fill="clear" 
+          color="medium" 
+          (click)="toggleRegister()">
+          {{ isRegistering ? '¿Ya tienes cuenta? Inicia sesión' : '¿No tienes cuenta? Regístrate' }}
+        </ion-button>
+
+        <ion-button 
+          class="secondary-button" 
+          fill="clear" 
+          (click)="forgotPassword()" 
+          *ngIf="!isRegistering">
+          ¿Olvidaste tu contraseña?
+        </ion-button>
+      </div>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,11 @@
+{
+  "/api-colormagic": {
+    "target": "https://colormagic.app/api",
+    "secure": true,
+    "changeOrigin": true,
+    "logLevel": "debug",
+    "pathRewrite": {
+      "^/api-colormagic": ""
+    }
+  }
+}

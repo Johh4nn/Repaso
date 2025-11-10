@@ -1,0 +1,287 @@
+// Variables de colores
+:root {
+  --primary-color: #3880ff;
+  --secondary-color: #3dc2ff;
+  --accent-color: #5260ff;
+  --background-color: #f8f9fa;
+  --card-background: #ffffff;
+  --text-primary: #2c2c2c;
+  --text-secondary: #6c757d;
+  --border-color: #e9ecef;
+  --border-radius: 12px;
+  --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-medium: 0 8px 24px rgba(0, 0, 0, 0.12);
+  --gradient-primary: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+}
+
+// Estilos del contenido principal
+ion-content {
+  --background: var(--background-color);
+  
+  .search-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 16px;
+  }
+}
+
+// Header mejorado
+ion-header {
+  ion-toolbar {
+    --background: var(--gradient-primary);
+    --color: white;
+    --border-width: 0;
+    
+    ion-title {
+      font-weight: 600;
+      font-size: 1.3rem;
+      text-align: center;
+    }
+  }
+}
+
+// Items del formulario mejorados
+ion-item {
+  --background: var(--card-background);
+  --border-radius: var(--border-radius);
+  --padding-start: 16px;
+  --padding-end: 16px;
+  --inner-padding-end: 0;
+  margin-bottom: 16px;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-light);
+  transition: all 0.3s ease;
+  
+  &:focus-within {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(56, 128, 255, 0.1);
+    transform: translateY(-2px);
+  }
+  
+  ion-input {
+    --padding-start: 0;
+    --color: var(--text-primary);
+    font-size: 1rem;
+    
+    &::placeholder {
+      color: var(--text-secondary);
+      opacity: 0.8;
+    }
+  }
+}
+
+// Botón de búsqueda mejorado
+ion-button {
+  --background: var(--gradient-primary);
+  --background-hover: var(--gradient-primary);
+  --background-activated: var(--accent-color);
+  --background-focused: var(--accent-color);
+  --border-radius: var(--border-radius);
+  --box-shadow: var(--shadow-light);
+  --color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  height: 50px;
+  margin: 24px 0;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    --box-shadow: var(--shadow-medium);
+    transform: translateY(-2px);
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// Lista de resultados mejorada
+ion-list {
+  background: transparent;
+  margin: 24px 0;
+  
+  ion-item {
+    --background: var(--card-background);
+    --border-radius: var(--border-radius);
+    --padding-start: 16px;
+    --padding-end: 16px;
+    margin-bottom: 12px;
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      border-color: var(--primary-color);
+      transform: translateX(4px);
+      box-shadow: var(--shadow-medium);
+    }
+    
+    &:active {
+      transform: translateX(2px);
+    }
+    
+    ion-label {
+      h2 {
+        color: var(--text-primary);
+        font-weight: 600;
+        font-size: 1.1rem;
+        margin-bottom: 4px;
+      }
+      
+      p {
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        line-height: 1.4;
+      }
+    }
+  }
+}
+
+// Contenedor de letras mejorado
+.lyrics-container {
+  background: var(--card-background);
+  border-radius: var(--border-radius);
+  padding: 24px;
+  margin: 24px 0;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-light);
+  
+  h3 {
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 1.3rem;
+    margin-bottom: 16px;
+    text-align: center;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 8px;
+  }
+  
+  pre {
+    color: var(--text-primary);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    background: var(--background-color);
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-color);
+    max-height: 500px;
+    overflow-y: auto;
+    
+    // Scrollbar personalizado
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+    
+    &::-webkit-scrollbar-track {
+      background: var(--background-color);
+      border-radius: 3px;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+      background: var(--primary-color);
+      border-radius: 3px;
+    }
+  }
+}
+
+// Estados vacíos y mensajes
+.empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--text-secondary);
+  
+  ion-icon {
+    font-size: 3rem;
+    margin-bottom: 16px;
+    color: var(--primary-color);
+  }
+  
+  h3 {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+  }
+  
+  p {
+    font-size: 0.95rem;
+  }
+}
+
+// Animaciones
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+// Responsive
+@media (max-width: 768px) {
+  .search-container {
+    padding: 12px;
+  }
+  
+  ion-item {
+    --padding-start: 12px;
+    --padding-end: 12px;
+    margin-bottom: 12px;
+  }
+  
+  .lyrics-container {
+    padding: 16px;
+    
+    pre {
+      padding: 16px;
+      font-size: 0.95rem;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .lyrics-container {
+    padding: 12px;
+    
+    pre {
+      padding: 12px;
+      font-size: 0.9rem;
+    }
+  }
+  
+  ion-button {
+    height: 48px;
+    font-size: 0.95rem;
+  }
+}
+
+// Estados de carga (opcional)
+.loading-spinner {
+  text-align: center;
+  padding: 40px;
+  
+  ion-spinner {
+    --color: var(--primary-color);
+    width: 40px;
+    height: 40px;
+  }
+}
+
+// Mejoras de accesibilidad
+ion-item:focus-within {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+ion-button:focus {
+  --box-shadow: 0 0 0 3px rgba(56, 128, 255, 0.3);
+}

@@ -1,0 +1,171 @@
+// Variables
+:root {
+  --primary-color: #3880ff;
+  --secondary-color: #3dc2ff;
+  --background-color: #f5f5f5;
+  --card-background: #ffffff;
+  --text-color: #333333;
+  --input-text-color: #2c2c2c;
+  --border-radius: 16px;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.auth-content {
+  --background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  
+  .auth-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .auth-card {
+    background: var(--card-background);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+    max-width: 400px;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    }
+  }
+
+  .card-header {
+    padding: 20px;
+    text-align: center;
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    color: white;
+
+    ion-title {
+      font-weight: 600;
+      font-size: 1.5rem;
+      color: white;
+    }
+  }
+
+  .card-content {
+    padding: 20px;
+  }
+
+  .logo {
+    text-align: center;
+    margin-bottom: 20px;
+
+    .logo-icon {
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      margin-bottom: 10px;
+    }
+
+    .app-name {
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 5px;
+    }
+
+    .app-tagline {
+      font-size: 0.9rem;
+      color: #6c757d;
+      margin-bottom: 0;
+    }
+  }
+
+  // Estilos para los items de formulario
+  ion-item {
+    --border-radius: 8px;
+    margin-bottom: 16px;
+    --background: #black;
+    --border-color: #e9ecef;
+
+    &.item-has-focus {
+      --border-color: var(--primary-color);
+      --background: #ffffff;
+    }
+  }
+
+  // Estilos para los inputs
+  .custom-input {
+    --padding-start: 12px;
+    --color: var(--input-text-color);
+    
+    &::placeholder {
+      color: #6c757d !important;
+      opacity: 1;
+    }
+  }
+
+  // Botón primario
+  .primary-button {
+    --background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    --border-radius: 8px;
+    --box-shadow: 0 4px 10px rgba(56, 128, 255, 0.3);
+    margin: 20px 0 10px;
+    font-weight: 600;
+    height: 48px;
+    --color: white;
+
+    &:hover {
+      --background: linear-gradient(to right, #2a6bd8, #32a8e0);
+    }
+  }
+
+  // Botones secundarios
+  .secondary-button {
+    --border-radius: 8px;
+    margin: 5px 0;
+    font-weight: 500;
+    --color: var(--primary-color);
+
+    &:hover {
+      --color: #2a6bd8;
+    }
+  }
+
+  // Estilos responsivos
+  @media (max-width: 480px) {
+    .auth-container {
+      padding: 10px;
+    }
+
+    .auth-card {
+      max-width: 100%;
+    }
+
+    .card-content {
+      padding: 15px;
+    }
+
+    .logo {
+      .app-name {
+        font-size: 1.5rem;
+      }
+
+      .logo-icon {
+        font-size: 2rem;
+      }
+    }
+  }
+
+  // Asegurar visibilidad del texto en todos los estados
+  ion-input {
+    color: var(--input-text-color) !important;
+    
+    .native-input {
+      color: var(--input-text-color) !important;
+    }
+    
+    .input-placeholder {
+      color: #6c757d !important;
+    }
+  }
+}

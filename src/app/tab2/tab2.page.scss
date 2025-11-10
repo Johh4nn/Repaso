@@ -1,0 +1,359 @@
+// Variables de colores
+:root {
+  --primary-color: #FF6B6B;
+  --secondary-color: #FFD166;
+  --accent-color: #06D6A0;
+  --background-color: #FFFCF9;
+  --card-background: #FFFFFF;
+  --text-primary: #2D3047;
+  --text-secondary: #6D6A75;
+  --border-color: #FFE8E8;
+  --shadow-light: 0 4px 20px rgba(255, 107, 107, 0.15);
+  --shadow-medium: 0 8px 30px rgba(255, 107, 107, 0.2);
+  --gradient-primary: linear-gradient(135deg, var(--primary-color), #FF8E8E);
+  --gradient-accent: linear-gradient(135deg, var(--accent-color), #4ECDC4);
+}
+
+// Estilos del contenido principal
+ion-content {
+  --background: var(--background-color);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+// Header mejorado
+ion-header {
+  ion-toolbar {
+    --background: var(--gradient-primary);
+    --color: white;
+    --border-width: 0;
+    --min-height: 70px;
+    
+    ion-title {
+      font-weight: 700;
+      font-size: 1.4rem;
+      letter-spacing: -0.5px;
+      text-align: center;
+      
+      &::after {
+        content: " 😂";
+        font-size: 1.2em;
+      }
+    }
+  }
+}
+
+// Spinner de carga mejorado
+ion-spinner {
+  --color: var(--primary-color);
+  width: 60px;
+  height: 60px;
+  margin: 40px auto;
+  display: block;
+  
+  &.spinner-crescent {
+    animation: pulse 1.5s ease-in-out infinite alternate;
+  }
+}
+
+// Tarjeta de chiste mejorada
+ion-card {
+  --background: var(--card-background);
+  border-radius: 20px;
+  margin: 20px 16px 32px;
+  box-shadow: var(--shadow-light);
+  border: 2px solid var(--border-color);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: visible;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-medium);
+  }
+  
+  // Decoración de la tarjeta
+  &::before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    height: 4px;
+    background: var(--gradient-primary);
+    border-radius: 20px 20px 0 0;
+  }
+  
+  ion-card-content {
+    padding: 32px 24px;
+    position: relative;
+    
+    // Icono decorativo de risa
+    &::before {
+      content: "😂";
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--card-background);
+      border: 3px solid var(--secondary-color);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      box-shadow: var(--shadow-light);
+    }
+  }
+}
+
+// Texto del chiste
+.joke-text {
+  white-space: pre-line;
+  font-size: 1.2em;
+  line-height: 1.6;
+  color: var(--text-primary);
+  text-align: center;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 500;
+  
+  // Efecto de aparición
+  animation: fadeInUp 0.6s ease-out;
+  
+  // Resaltar el remate del chiste
+  &:last-line {
+    font-weight: 700;
+    color: var(--primary-color);
+  }
+}
+
+// Botón mejorado
+ion-button {
+  --background: var(--gradient-accent);
+  --background-hover: var(--gradient-accent);
+  --background-activated: #05C293;
+  --background-focused: #05C293;
+  --border-radius: 50px;
+  --box-shadow: 0 6px 20px rgba(6, 214, 160, 0.3);
+  --color: white;
+  font-weight: 700;
+  font-size: 1.1rem;
+  height: 56px;
+  margin: 16px 24px 32px;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  text-transform: none;
+  letter-spacing: 0.5px;
+  
+  &:hover {
+    --box-shadow: 0 8px 25px rgba(6, 214, 160, 0.4);
+    transform: translateY(-3px) scale(1.02);
+  }
+  
+  &:active {
+    transform: translateY(0) scale(1);
+  }
+  
+  // Icono del botón
+  &::after {
+    content: " 🔄";
+    font-size: 1.1em;
+    margin-left: 8px;
+  }
+}
+
+// Estados vacíos
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-secondary);
+  
+  .empty-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    display: block;
+  }
+  
+  h3 {
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+  
+  p {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+}
+
+// Animaciones
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.95);
+    opacity: 0.7;
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 60%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  80% {
+    transform: translateY(-5px);
+  }
+}
+
+// Aplicar animación de entrada
+.fade-in {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+// Efecto especial para el botón al hacer clic
+.button-clicked {
+  animation: bounce 0.6s ease;
+}
+
+// Decoraciones de fondo
+.background-decoration {
+  position: fixed;
+  pointer-events: none;
+  z-index: -1;
+  
+  &.emoji-1 {
+    top: 10%;
+    left: 5%;
+    font-size: 3rem;
+    opacity: 0.1;
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  &.emoji-2 {
+    bottom: 20%;
+    right: 8%;
+    font-size: 2.5rem;
+    opacity: 0.08;
+    animation: float 8s ease-in-out infinite reverse;
+  }
+  
+  &.emoji-3 {
+    top: 40%;
+    right: 15%;
+    font-size: 2rem;
+    opacity: 0.06;
+    animation: float 7s ease-in-out infinite;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(10deg);
+  }
+}
+
+// Responsive
+@media (max-width: 768px) {
+  ion-card {
+    margin: 16px 12px 24px;
+    border-radius: 16px;
+    
+    ion-card-content {
+      padding: 28px 20px;
+    }
+  }
+  
+  .joke-text {
+    font-size: 1.15em;
+  }
+  
+  ion-button {
+    margin: 12px 20px 24px;
+    height: 52px;
+    font-size: 1.05rem;
+  }
+}
+
+@media (max-width: 480px) {
+  ion-header {
+    ion-toolbar {
+      --min-height: 60px;
+      
+      ion-title {
+        font-size: 1.2rem;
+      }
+    }
+  }
+  
+  ion-card {
+    margin: 12px 8px 20px;
+    
+    ion-card-content {
+      padding: 24px 16px;
+      
+      &::before {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+      }
+    }
+  }
+  
+  .joke-text {
+    font-size: 1.1em;
+  }
+  
+  ion-button {
+    margin: 8px 16px 20px;
+    height: 48px;
+    font-size: 1rem;
+  }
+}
+
+// Mejoras de accesibilidad
+ion-button:focus {
+  --box-shadow: 0 0 0 3px rgba(6, 214, 160, 0.4);
+}
+
+ion-card:focus-within {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+// Modo oscuro (opcional)
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-color: #1A1A2E;
+    --card-background: #16213E;
+    --text-primary: #FFFFFF;
+    --text-secondary: #B8B8D1;
+    --border-color: #2D3047;
+  }
+}

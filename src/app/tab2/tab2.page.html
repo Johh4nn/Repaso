@@ -1,17 +1,17 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Chistes Aleatorios 😂</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
+  <ion-spinner *ngIf="isLoading" name="crescent"></ion-spinner>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <ion-card *ngIf="!isLoading">
+    <ion-card-content>
+      <p style="white-space: pre-line; font-size: 1.1em;">{{ joke }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button expand="full" (click)="loadJoke()">Nuevo chiste</ion-button>
 </ion-content>
